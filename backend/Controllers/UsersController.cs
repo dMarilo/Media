@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using backend.Data;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController
+    [Authorize]
+    public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
         public UsersController(DataContext context)
@@ -19,6 +19,7 @@ namespace backend.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
