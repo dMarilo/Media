@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using backend.Extensions;
+using backend.Models;
 
-namespace backend.Models
+namespace backend.DTOs
 {
-    public class User
+    public class ExistingUserDto
     {
         public int Id { get; set; }
+        public string ?PictureUrl { get; set; }
         public string ?Username { get; set; }
-        public byte[] ?PasswordHash { get; set; }
-        public byte[] ?PasswordSalt { get; set; }
         public string ?Bio { get; set; }
         public string ?FirstName { get; set; }
         public string ?LastName { get; set; }
@@ -22,15 +21,9 @@ namespace backend.Models
         public string ?LookingFor { get; set; }
         public string ?Location { get; set; }
         public string ?Country { get; set; }
-        public DateOnly Birthday { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime LastActiveAt { get; set; } = DateTime.UtcNow;
-        public List<Picture> Pictures { get; set; } = new();
-
-        public int GetAge()
-        {
-            return Birthday.CalculateAge();
-        }
+        public int Age { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime LastActiveAt { get; set; }
+        public List<PictureDto> Pictures { get; set; }
     }
-    
 }
