@@ -1,0 +1,128 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg">
+        <div class="card-body p-4">
+          <h3 class="card-title text-center mb-4">Create an Account</h3>
+
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First Name *</label>
+              <input
+                type="text"
+                formControlName="first_name"
+                id="first_name"
+                class="form-control"
+                [ngClass]="{'is-invalid': registrationForm.get('first_name')?.touched && registrationForm.get('first_name')?.invalid}"
+                placeholder="First name"
+                required
+              />
+              <div *ngIf="registrationForm.get('first_name')?.touched && registrationForm.get('first_name')?.invalid" class="invalid-feedback">
+                First name is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name *</label>
+              <input
+                type="text"
+                formControlName="last_name"
+                id="last_name"
+                class="form-control"
+                [ngClass]="{'is-invalid': registrationForm.get('last_name')?.touched && registrationForm.get('last_name')?.invalid}"
+                placeholder="Last name"
+                required
+              />
+              <div *ngIf="registrationForm.get('last_name')?.touched && registrationForm.get('last_name')?.invalid" class="invalid-feedback">
+                Last name is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email *</label>
+              <input
+                type="email"
+                formControlName="email"
+                id="email"
+                class="form-control"
+                [ngClass]="{'is-invalid': emailError || (registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid)}"
+                placeholder="name@example.com"
+                required
+              />
+              <div *ngIf="emailError" class="invalid-feedback">
+                {{ emailError }}
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password *</label>
+              <input
+                type="password"
+                formControlName="password"
+                id="password"
+                class="form-control"
+                [ngClass]="{'is-invalid': passwordError || (registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid)}"
+                placeholder="Your Password"
+                required
+              />
+              <div *ngIf="passwordError" class="invalid-feedback">
+                {{ passwordError }}
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password_confirmation" class="form-label">Confirm Password *</label>
+              <input
+                type="password"
+                formControlName="password_confirmation"
+                id="password_confirmation"
+                class="form-control"
+                [ngClass]="{'is-invalid': registrationForm.errors?.['mismatch'] && (registrationForm.get('password_confirmation')?.touched || registrationForm.get('password_confirmation')?.dirty)}"
+                placeholder="Confirm Your Password"
+                required
+              />
+              <div *ngIf="registrationForm.errors?.['mismatch'] && (registrationForm.get('password_confirmation')?.touched || registrationForm.get('password_confirmation')?.dirty)" class="invalid-feedback">
+                Passwords do not match.
+              </div>
+            </div>
+
+            <div class="form-check mb-3">
+              <input
+                type="checkbox"
+                formControlName="agreeToTerms"
+                id="agreeToTerms"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="agreeToTerms">
+                I agree to the <a href="#" class="text-primary">terms and conditions</a>
+              </label>
+              <div *ngIf="registrationForm.get('agreeToTerms')?.touched && registrationForm.get('agreeToTerms')?.invalid" class="invalid-feedback">
+                You must agree to the terms and conditions.
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 position-relative">
+              <ng-container *ngIf="!loading; else loadingContent">
+                Sign Up
+              </ng-container>
+              <ng-template #loadingContent>
+                <span class="position-absolute inset-0 d-flex align-items-center justify-content-center">
+                  <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </span>
+                Signing Up...
+              </ng-template>
+            </button>
+
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mt-3">
+              <p class="mb-0">Already have an account?</p>
+              <button class="btn btn-link" (click)="navigateToLogin()">Log In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

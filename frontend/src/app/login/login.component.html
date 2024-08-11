@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-lg border-0 rounded-3 overflow-hidden">
+        <div class="card-body p-4">
+          <h3 class="card-title text-center mb-4">Login</h3>
+
+          <form #loginFOrm="ngForm" (ngSubmit)="login()" autocomplete="off">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username *</label>
+              <input
+                id="username"
+                name="username"
+                [(ngModel)]="model.username"
+                class="form-control shadow-sm border-0 rounded-pill"
+                type="text"
+                placeholder="Enter your username"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password *</label>
+              <input
+                id="password"
+                name="password"
+                [(ngModel)]="model.password"
+                class="form-control shadow-sm border-0 rounded-pill"
+                type="password"
+                placeholder="Enter your password"
+                required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill shadow-sm">Log In</button>
+
+            <div class="d-flex justify-content-center mt-3">
+              <p class="mb-0 text-muted">Don't have an account?</p>
+              <a class="btn btn-link ms-2 text-primary" href="#">Sign Up</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: Add custom styles for extra flair -->
+<style>
+  .card {
+    background: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    background: #f9f9f9;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+  }
+
+  .btn-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+
+  .text-muted {
+    color: #6c757d;
+  }
+</style>
