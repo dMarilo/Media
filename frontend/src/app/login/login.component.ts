@@ -20,14 +20,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: response => {
-        console.log(response);
+      next: _ => {
         this.loggedIn = true;
         this.router.navigate(['/members']);
-      },
-      error: error => {
-        this.toastr.error(error.error),
-        console.log(error)
       }
     })
   }
