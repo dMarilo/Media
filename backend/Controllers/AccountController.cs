@@ -54,7 +54,7 @@ namespace backend.Controllers
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == loginDto.Username);
 
-            if(user == null) return Unauthorized();
+            if(user == null) return Unauthorized("invalide username");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
 

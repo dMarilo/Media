@@ -12,6 +12,7 @@ import { User } from '../models/user';
 })
 export class NavBarComponent implements OnInit{
   model: any = {}
+  user: any;
 
   showNavBar = true;
 
@@ -21,19 +22,8 @@ export class NavBarComponent implements OnInit{
     this.navBarService.showNavBar$.subscribe(show => {
       this.showNavBar = show;
     });
+    this.getUser();
   }
-
-  /*
-  login() {
-    this.accountService.login(this.model).subscribe({
-      next: response => {
-        console.log(response);
-        this.loggedIn = true;
-      },
-      error: error => console.log(error)
-    })
-  }
-    */
 
   login() {
     this.router.navigate(['/login']);
@@ -45,5 +35,16 @@ export class NavBarComponent implements OnInit{
 
   register() {
     this.router.navigate(['/register']);
+  }
+
+  getUser() {
+    const userString = localStorage.getItem('user');
+
+    if (userString) {
+      const user = JSON.parse(userString);
+        this.user = user;
+    } else {
+      console.log('No user found in local storage.');
+    }
   }
 }
