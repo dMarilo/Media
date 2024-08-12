@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       // Adjust this condition based on your route names or paths
-      this.showNavBar = !this.router.url.includes('/registerr');
+      this.showNavBar = !this.router.url.includes('/login');
       this.navBarService.setShowNavBar(this.showNavBar);
     });
   }

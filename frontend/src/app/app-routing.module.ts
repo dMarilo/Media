@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       {path: 'members', component: MemberListComponent},
-      {path: 'mebers/:id', component: MemberDetailComponent},
+      {path: 'members/:username', component: MemberDetailComponent},
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent}
     ]
@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: 'server-error', component: ServerErrorComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+
 ];
 
 @NgModule({

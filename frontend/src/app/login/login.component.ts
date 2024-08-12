@@ -11,7 +11,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   model: any = {}
-  loggedIn = false;
 
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) {}
 
@@ -21,7 +20,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.accountService.login(this.model).subscribe({
       next: _ => {
-        this.loggedIn = true;
         this.router.navigate(['/members']);
       }
     })

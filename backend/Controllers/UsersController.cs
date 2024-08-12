@@ -25,7 +25,6 @@ namespace backend.Controllers
             _uSerRepository = uSerRepository;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
