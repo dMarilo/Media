@@ -1,0 +1,65 @@
+<div class="row" *ngIf="member">
+  <div class="col-4">
+    <div class="col-8">
+      <h1>Your profile</h1>
+    </div>
+    <div class="card">
+      <img src="{{member.pictureUrl || './assets/user.png'}}" alt="{{member.firstName}}" class="card-img-top img-thumbnail">
+      <div class="card-body">
+        <div>
+          <strong>Full name:</strong>
+          <p>{{member.firstName}} {{member.lastName}}</p>
+        </div>
+        <div>
+          <strong>Location:</strong>
+          <p>{{member.location}}, {{member.country}}</p>
+        </div>
+        <div>
+          <strong>Age:</strong>
+          <p>{{member.age}}</p>
+        </div>
+        <div>
+          <strong>Last active:</strong>
+          <p>{{member.lastActiveAt}}</p>
+        </div>
+        <div>
+          <strong>Member since:</strong>
+          <p>{{member.createdAt}}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" [disabled]="!editForm.dirty" class="btn btn-success col-12" form="editForm">Save changes</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset class="member-tabs">
+      <tab heading="{{member.firstName}}">
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="update()">
+          <h4 class="mt-2">Description</h4>
+          <textarea class="form-control" [(ngModel)]="member.bio" name="bio" rows="6"></textarea>
+          <h4 class="mt-2">Looking for</h4>
+          <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" rows="6"></textarea>
+          <h4 class="mt-2">Interests</h4>
+          <textarea class="form-control" [(ngModel)]="member.interests" name="interests"></textarea>
+          <h4 class="mt-2">Location details</h4>
+          <div class="d-flex flex-row align-items-center">
+            <label for="city">City: </label>
+            <input type="text" [(ngModel)]="member.location" name="location" class="form-control mx-2">
+            <label for="city">Coutnry: </label>
+            <input type="text" [(ngModel)]="member.country" name="country" class="form-control mx-2">
+          </div>
+        </form>
+        <div class="col-16" pb-0>
+          <div class="alert alert-info pb-0" *ngIf="editForm.dirty">
+            <p><strong>Information: </strong>Unsaved changes were made!</p>
+          </div>
+        </div>
+      </tab>
+      <tab heading="Edit Photos">
+        <p>Photo edit will go here</p>
+      </tab>
+    </tabset>
+  </div>
+</div>
+

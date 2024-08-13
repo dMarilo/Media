@@ -1,0 +1,14 @@
+.img-thumbnail {
+  margin: 25px;
+  width: 85%;
+  height: 85%;
+}
+
+.card-body {
+  padding: 0 25px;
+}
+
+textarea.form-control {
+  width: 100%; /* Makes the text area take up the full width of its container */
+  max-width: 1200px; /* Optional: Limits the maximum width */
+}

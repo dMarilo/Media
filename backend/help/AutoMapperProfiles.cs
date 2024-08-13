@@ -14,6 +14,7 @@ namespace backend.help
         {
             CreateMap<User, ExistingUserDto>().ForMember(destionation => destionation.PictureUrl, option => option.MapFrom(src => src.Pictures.FirstOrDefault(x => x.IsMain).Location));
             CreateMap<Picture, PictureDto>();
+            CreateMap<ProfileUpdateDto, User>();
         }
     }
 }

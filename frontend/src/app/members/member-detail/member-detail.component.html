@@ -4,6 +4,10 @@
       <img src="{{member.pictureUrl || './assets/user.png'}}" alt="{{member.firstName}}" class="card-img-top img-thumbnail">
       <div class="card-body">
         <div>
+          <strong>Full name:</strong>
+          <p>{{member.firstName}} {{member.lastName}}</p>
+        </div>
+        <div>
           <strong>Location:</strong>
           <p>{{member.location}}, {{member.country}}</p>
         </div>

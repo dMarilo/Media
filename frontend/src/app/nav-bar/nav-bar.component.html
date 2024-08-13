@@ -18,14 +18,14 @@
         </li>
     </ul>
 
-    <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
+    <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown >
       <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>
         <!-- Profile Picture -->
         <img *ngIf="picUrl" [src]="picUrl" class="profile-pic" alt="User Picture" />
         Welcome {{user.username}}
       </a>
-      <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item">Edit profile</a>
+      <div class="dropdown-menu mt-3" *dropdownMenu >
+        <a class="dropdown-item" routerLink="/member/profile">Edit profile</a>
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
     </div>

@@ -23,6 +23,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { UserViewComponent } from './members/user-view/user-view.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ProfileComponent } from './members/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    UserViewComponent
+    UserViewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserAnimationsModule,
